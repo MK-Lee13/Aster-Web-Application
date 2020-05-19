@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<!--
+Template Name: Nekmit
+Author: <a href="https://www.os-templates.com/">OS Templates</a>
+Author URI: https://www.os-templates.com/
+Copyright: OS-Templates.com
+Licence: Free to use under our free template licence terms
+Licence URI: https://www.os-templates.com/template-terms
+-->
+<html lang="">
+<!-- To declare your language - read more here: https://www.w3.org/International/questions/qa-html-language-declarations -->
+
+<head>
+    <link rel="shortcut icon" type="image/x-icon" href="../images/demo/titleicon.png">
+
+    <title>ASTER 어학원</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link href="../layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+    integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+    integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+    crossorigin="anonymous"></script>
+
+  <script>
+    function postDB() {
+      var para = document.location.href.split("/"); 
+      console.log(para);
+      //console.log(para);
+       $(document).ready(function(){
+          $.ajax({
+              url: "http://localhost:8080/download/ppa2",
+              data: {num:para[4]},
+              type: 'POST',
+              success: function(data){
+                  var event_data = '';
+                  event_data += '<h1 class = "title">' + data.title + '</h1>';
+                  event_data += '<p class = "description">' + data.description+ '</p>';
+                  event_data += '<br><h1 class = "title">Image</h1>'
+                  event_data += '<ul class="nospace clear">'
+                  if (data.filelist != "0") {
+                    data.filelist.forEach(function(src){
+                      event_data += '<li class="one_quarter"><a href="#"><img class="imgl borderedbox inspace-5" src='+'http://localhost:8080/image2/url/'+data.idx+'/'+src+' alt=""></a></li>'
+                    });
+                  }
+                  $("#list_a").empty();
+                  $("#list_a").append(event_data);
+              },
+              error: function(d){
+                  alert("404. Please wait until the File is Loaded.");
+              }
+          });
+      });
+    }
+
+
+  </script>
+
+
+
+</head>
+
+<body id="top">
+  <!-- ################################################################################################ -->
+  <!-- ################################################################################################ -->
+  <!-- ################################################################################################ -->
+  <!-- Top Background Image Wrapper -->
+  <div class="bgded overlay padtop" style="background-image:url('../images/demo/backgrounds/naver5.jpg');">   <!-- ################################################################################################ -->
+    <!-- ################################################################################################ -->
+    <!-- ################################################################################################ -->
+    <header id="header" class="hoc clear">
+      <div id="logo" class="fl_left">
+        <!-- ################################################################################################ -->
+        <h1><a href="basic-grid.html">ASTER</a></h1>
+        <!-- ################################################################################################ -->
+      </div>
+      <nav id="mainav" class="fl_right">
+        <!-- ################################################################################################ -->
+        <ul class="clear">
+          <li><a href="http://localhost:8080/main">Home</a></li>
+          <li class="active"><a class="drop" href="#">커리큘럼 안내</a>
+            <ul>
+              <li><a href="http://localhost:8080/main/curriculum1">초등부 커리큘럼</a></li>
+              <li><a href="http://localhost:8080/main/curriculum2">중등부 커리큘럼</a></li>
+              <li><a href="http://localhost:8080/main/curriculum3">고등부 커리큘럼</a></li>
+              <!--<li><a href="sidebar-right.html">자료실</a></li>
+              <li class="active"><a href="basic-grid.html">Basic Grid</a></li>
+              <li><a href="font-icons.html">Font Icons</a></li>-->
+            </ul>
+          </li>
+          <li><a href="http://localhost:8080/main/news">ASTER 주요행사</a></li>
+          <li class="active"><a class="drop" href="#">초/중/고등부 소식</a>
+            <ul>
+              <li><a href="http://localhost:8080/main/news1">초등부</a></li>
+              <li><a href="http://localhost:8080/main/news2">중등부</a></li>
+              <li><a href="http://localhost:8080/main/news3">고등부</a></li>
+              <!--<li><a href="sidebar-right.html">자료실</a></li>
+            <li class="active"><a href="basic-grid.html">Basic Grid</a></li>
+            <li><a href="font-icons.html">Font Icons</a></li>-->
+            </ul>
+          </li>
+          <li><a class="drop" href="#">자료실</a>
+            <ul>
+              <li><a href="http://localhost:8080/main/data1">초등부 자료실</a></li>
+              <li><a href="http://localhost:8080/main/data2">중등부 자료실</a></li>
+              <li><a href="http://localhost:8080/main/data3">고등부 자료실</a></li>
+              <li><a href="http://localhost:8080/main/data4">모의고사 자료집</a></li>
+            </ul>
+          </li>
+          <li><a href="http://localhost:8080/main/repost">칭찬과 건의</a></li>
+          <li><a href="http://localhost:8080/main/video">입시 및 학습법 강연실</a></li>
+        </ul>
+        <!-- ################################################################################################ -->
+      </nav>
+    </header>
+    <!-- ################################################################################################ -->
+    <!-- ################################################################################################ -->
+    <!-- ################################################################################################ -->
+    <div id="breadcrumb" class="hoc clear">
+      <!-- ################################################################################################ -->
+      <ul>
+        <li><a href="http://localhost:8080/main">Home</a></li>
+        <li><a href="http://localhost:8080/logout">Logout</a></li>
+      </ul>
+      <!-- ################################################################################################ -->
+    </div>
+    <!-- ################################################################################################ -->
+  </div>
+  <!-- End Top Background Image Wrapper -->
+  <!-- ################################################################################################ -->
+  <!-- ################################################################################################ -->
+  <!-- ################################################################################################ -->
+  <!-- ################################################################################################ -->
+  <!-- ################################################################################################ -->
+  <!-- ################################################################################################ -->
+  <div class="wrapper row3">
+    <main class="hoc container clear">
+      <!-- main body -->
+      <!-- ################################################################################################ -->
+      <div class="content">
+        <!-- ################################################################################################ -->
+        <h1 style ="font-weight:bold"> &lt;중등부 소식 &gt;</h1>
+        <script>postDB()</script>
+        <br><br><br><br>
+        <div id = "list_a">
+
+        </div>
+
+
+        </div>
+
+        <br><br>
+
+
+
+      <!-- ################################################################################################ -->
+      <!-- / main body -->
+      <div class="clear"></div>
+    </main>
+
+    <br><br>
+  </div>
+
+
+  <div class="wrapper row1">
+    <section id="ctdetails" class="hoc clear">
+      <!-- ################################################################################################ -->
+      <ul class="nospace clear">
+        <li class="one_quarter first">
+          <div class="block clear"><a href="#"><i class="fas fa-phone"></i></a> <span><strong>Give us a call:</strong>
+              상무: 062-375-0903, 금호: 062-363-0903</span></div>
+        </li>
+        <li class="one_quarter">
+          <div class="block clear"><a href="#"><i class="fas fa-envelope"></i></a> <span><strong>Send us a
+                mail:</strong> aster0903@naver.com</span></div>
+        </li>
+        <li class="one_quarter">
+          <div class="block clear"><a href="#"><i class="fas fa-clock"></i></a> <span><strong> Mon. - Sun.:</strong>
+              08.00am - 18.00pm</span></div>
+        </li>
+        <li class="one_quarter">
+          <div class="block clear"><a href="#"><i class="fas fa-map-marker-alt"></i></a> <span><strong>Come visit
+                us:</strong> Directions to <a href="#">our location</a></span></div>
+        </li>
+      </ul>
+      <!-- ################################################################################################ -->
+    </section>
+  </div>
+  <!-- ################################################################################################ -->
+  <!-- ################################################################################################ -->
+  <!-- ################################################################################################ -->
+  <!-- ################################################################################################ -->
+  <!-- ################################################################################################ -->
+  <!-- ################################################################################################ -->
+  <div class="wrapper row5">
+    <div id="copyright" class="hoc clear">
+      <!-- ################################################################################################ -->
+      <p class="fl_left">Copyright &copy; 2018 - All Rights Reserved - <a href="#">Domain Name</a></p>
+      <p class="fl_right">Template by <a target="_blank" href="https://www.os-templates.com/"
+          title="Free Website Templates">OS Templates</a></p>
+      <!-- ################################################################################################ -->
+    </div>
+  </div>
+  <!-- ################################################################################################ -->
+  <!-- ################################################################################################ -->
+  <!-- ################################################################################################ -->
+  <a id="backtotop" href="#top"><i class="fas fa-chevron-up"></i></a>
+  <!-- JAVASCRIPTS -->
+
+  <script src="../layout/scripts/jquery.min.js"></script>
+  <script src="../layout/scripts/jquery.backtotop.js"></script>
+  <script src="../layout/scripts/jquery.mobilemenu.js"></script>
+</body>
+
+</html>
